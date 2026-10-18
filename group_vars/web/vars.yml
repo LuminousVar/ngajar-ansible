@@ -1,0 +1,2 @@
+---
+app_token: "{{ vault_app_token }}"

@@ -1,0 +1,10 @@
+---
+- name: Lab 5 - Harden SSH with devsec.hardening
+  hosts: web
+  become: true
+  vars:
+    # The main lab connects as the ansible user, so root login is closed ("no", the role default).
+    # The bootstrap.sh fallback connects as root, so root keeps key-only access there.
+    ssh_permit_root_login: "{{ 'without-password' if (ansible_user | default('root')) == 'root' else 'no' }}"
+  roles:
+    - devsec.hardening.ssh_hardening

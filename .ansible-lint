@@ -1,0 +1,5 @@
+---
+profile: production
+# Participants install devsec.hardening in Lab 5. Mock the role so the Lab 4 lint run passes without it.
+mock_roles:
+  - devsec.hardening.ssh_hardening

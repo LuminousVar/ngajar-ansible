@@ -1,0 +1,4 @@
+ansible.log
+roles/
+killercoda/images/lab_ed25519.pub
+group_vars/*/vault.yml

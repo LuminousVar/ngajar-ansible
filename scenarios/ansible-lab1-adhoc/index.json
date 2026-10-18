@@ -1,0 +1,24 @@
+{
+  "title": "Ansible Lab 1: Ad-hoc Commands and Idempotency",
+  "description": "1 control node + 3 managed nodes (systemd containers), ready in about 3 minutes",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "background.sh",
+      "foreground": "foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Ad-hoc commands, facts and idempotency",
+        "text": "step1.md",
+        "verify": "verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

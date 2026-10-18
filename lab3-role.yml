@@ -1,0 +1,8 @@
+---
+- name: Lab 3 - Deploy nginx through the webserver role
+  hosts: web
+  become: true
+  roles:
+    - role: webserver
+      vars:
+        webserver_site_title: Ansible Training (from role)

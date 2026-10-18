@@ -1,0 +1,21 @@
+---
+- name: Lab 4 - Secrets with Ansible Vault
+  hosts: web
+  become: true
+  tasks:
+    - name: Create the app config directory
+      ansible.builtin.file:
+        path: /etc/demo-app
+        state: directory
+        owner: root
+        group: root
+        mode: "0750"
+
+    - name: Write the app token
+      ansible.builtin.copy:
+        content: "{{ app_token }}\n"
+        dest: /etc/demo-app/token
+        owner: root
+        group: root
+        mode: "0600"
+      no_log: true

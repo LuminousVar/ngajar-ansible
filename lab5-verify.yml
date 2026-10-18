@@ -1,0 +1,22 @@
+---
+- name: Lab 5 - Verify the SSH hardening
+  hosts: web
+  become: true
+  gather_facts: false
+  vars:
+    expected_root_login: "{{ 'without-password|prohibit-password' if (ansible_user | default('root')) == 'root' else 'no' }}"
+  tasks:
+    - name: Read the effective sshd config
+      ansible.builtin.command: sshd -T
+      register: sshd_effective
+      changed_when: false
+
+    - name: Check key controls against the baseline
+      ansible.builtin.assert:
+        that:
+          - sshd_effective.stdout is search('(?m)^permitrootlogin (' ~ expected_root_login ~ ')$')
+          - sshd_effective.stdout is search('(?m)^passwordauthentication no$')
+          - sshd_effective.stdout is search('(?m)^x11forwarding no$')
+          - sshd_effective.stdout is search('(?m)^allowtcpforwarding no$')
+        success_msg: SSH controls match the baseline
+        fail_msg: At least one SSH control does not match. Check the sshd -T output.

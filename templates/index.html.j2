@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>{{ site_title }}</title></head>
+<body>
+  <h1>{{ site_title }}</h1>
+  <p>Host: {{ ansible_facts['hostname'] }} ({{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }})</p>
+  <p>Managed by Ansible. Manual changes will be overwritten.</p>
+</body>
+</html>

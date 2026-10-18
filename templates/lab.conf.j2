@@ -1,0 +1,8 @@
+# Managed by Ansible. Manual changes will be overwritten.
+server {
+    listen {{ web_port }};
+    server_name _;
+    root {{ web_root }};
+    index index.html;
+    server_tokens off;
+}
